@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>아이디</td>
+			<td>이름</td>
+			<td>성별</td>
+			<td>종</td>
+			<td>최초등록일자</td>
+			<td>수정일자</td>
+		</tr>
+		<tr th:each="animal : ${list}">
+			<td th:text="${animal.id}"></td>
+			<td>[[${animal.name}]]</td>
+			<td th:text="${animal.gender}"></td>
+			<td th:text="${animal.kind}"></td>
+			<td th:text="${animal.regdate}"></td>
+			<td th:text="${animal.updatedata}"></td>
+		</tr>
+	</table>
+	<hr>
+	<th:block th:each="pageNumber : ${#numbers.sequence(1, 10)}">
+		<span th:text="${pageNumber}"></span>
+	</th:block>
+</body>
+</html>
+
+
+
+

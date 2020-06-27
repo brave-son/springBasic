@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="sign_in">
+		<input type="number" name="num"><br>
+		<input type="text" name="name"><br>
+		<input type="submit">
+	</form>
+	
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		// jQuery AJAX
+		$('input:submit').click(function() {
+			$.ajax({
+				url: '/sign_in',
+				type: 'post',
+				data: {
+					num: $('[name=num]').val(),
+					name: $('[name=name]').val(),
+				},
+			
+// 				data: $('form').serialize(), // num=12&name=홍길동....
+				success: function(res) {
+					alert(res.msg);
+					if(로그인 성공이면..) {
+						location = "어디주소";
+					}
+				}
+			});
+			return false; // 기존 submit 버튼의 기능을 막기 위해서
+		});
+		
+		
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

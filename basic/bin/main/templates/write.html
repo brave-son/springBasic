@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 	<img src="http://localhost:8080/download" width=100> -->
+	
+	<form action="/write" method="post" enctype="multipart/form-data">
+		제목 : <input type="text" name="title"><br>
+		내용 : <textarea name="content"></textarea><br>
+		작성자 : <input type="text" name="owner"><br>
+		<input type="file" name="file" multiple><br>
+		<input type="submit">
+	</form>
+	
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		$('input:submit').click(function() {
+			// 폼 태그 가져오기
+			// 폼데이터 라는 객체 이용
+			var form = $('form')[0];
+            var formData = new FormData(form);
+
+			$.ajax({
+				url: '/write',
+				type: 'post',
+				processData: false,
+                contentType: false,
+				data: formData, // num=12&name=홍길동....
+				success: function(res) {
+					alert(res.msg);
+				}
+			});
+			return false; // 기존 submit 버튼의 기능을 막기 위해서
+		});
+		
+		
+	</script>
+	
+</body>
+</html>
